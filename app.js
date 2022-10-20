@@ -33,9 +33,10 @@ function copyToClickboard(text) {
     return navigator.clipboard.writeText(text)
 }
 
-function setTextButtonColor(text, color) {
+function setTextButtonColor(text, button, color) {
     const luminance = chroma(color).luminance()
     text.style.color = luminance > 0.5 ? '#000' : '#fff'
+    button.style.color = text.style.color
 }
 
 function setRandomColors(isInitial) {
@@ -64,8 +65,7 @@ function setRandomColors(isInitial) {
         text.textContent = color
         col.style.background = color
 
-        setTextButtonColor(text, color)
-        setTextButtonColor(button, color)
+        setTextButtonColor(text, button, color)
     })
 
     updateColorsHash(colors)
